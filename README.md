@@ -1,4 +1,5 @@
 # 7qNode
 前后端分离框架
 
-##test
+##关于日志
+移除logjs4,使用alinode和pm2管理日志(https://wohugb.gitbooks.io/pm2/content/features/log.html)
