@@ -3,10 +3,20 @@
  */
 
 "use strict";
+// middle
+var ApiHandle = require('../middles/api');
+
+// router
+var Index = require('../routers/index');
+var Api = require('../routers/api');
 
 module.exports = function(app){
+    // middle api
+    ApiHandle(app);
+
     // index page
-    app.get('/', function(req, res){
-        res.render('index', { title: 'Express' });
-    });
+    Index(app);
+
+    // API
+    Api(app);
 };

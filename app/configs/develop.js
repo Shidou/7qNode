@@ -1,7 +1,11 @@
 "use strict";
 
 var configs = {
-    serverUrl: ''
+    serverUrl: '',
+    rule: {
+        local: '',
+        after: ''
+    }
 };
 
 module.exports = configs;

@@ -17,6 +17,8 @@ module.exports = function(app){
     // will print stacktrace
     if (qNode.env === 'dev') {
         app.use(function(err, req, res, next) {
+            if(req.path.indexOf('api') > -1)
+                return res.fail(err);
             res.status(err.status || 500);
             res.render('error', {
                 message: err.message,
@@ -34,4 +36,4 @@ module.exports = function(app){
             error: {}
         });
     });
-}
+};
