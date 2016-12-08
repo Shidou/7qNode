@@ -7,7 +7,7 @@
 var path = require('path');
 
 global.qNode = {};
-global.qNode.env = (process.argv[2] === "production") ? 'prd' : 'dev';
+global.qNode.env = (process.argv[2] === "production") ? 'pro' : 'dev';
 require('./tool');
 
 // 如果没有指定则默认为生产环境

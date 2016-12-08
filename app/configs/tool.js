@@ -3,9 +3,16 @@
  */
 "use strict";
 
+var secrets = require('./secret');
+var crypto = require('crypto');
+
 global.qNode.tools = {};
 
-// 处理API公共类方法
+/**
+ * 处理API公共类方法
+ * @param app
+ * @param req
+ */
 global.qNode.tools.api = function(app, request){
     app.get(/^\/api\/.*$/i, function(req, res, next){
         var urlPath = qNode.configs.serverUrl + req.originalUrl.replace(qNode.configs.rule.local,  qNode.configs.rule.after);
@@ -35,4 +42,28 @@ global.qNode.tools.api = function(app, request){
             }
         });
     });
+};
+
+
+/**
+ * aes加密
+ * @param data
+ * @param secretKey
+ */
+global.qNode.tools.aesEncrypt = function(data, secretKey) {
+    var secret = secretKey || secrets.secretKey;
+    var cipher = crypto.createCipher('aes-128-ecb',secret);
+    return cipher.update(data,'utf8','hex') + cipher.final('hex');
+};
+
+/**
+ * aes解密
+ * @param data
+ * @param secretKey
+ * @returns {*}
+ */
+global.qNode.tools.aesDecrypt = function(data, secretKey) {
+    var secret = secretKey || secrets.secretKey;
+    var cipher = crypto.createDecipher('aes-128-ecb',secret);
+    return cipher.update(data,'hex','utf8') + cipher.final('utf8');
 };
