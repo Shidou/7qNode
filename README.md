@@ -3,6 +3,29 @@
 
 ## 使用说明
 
+* ### 支持get请求接口自动转发
+    访问如下地址
+    ```
+    http://127.0.0.1:3000/api/query?type=shunfeng&postid=972360168653
+    ```
+    根据规则会自动请求配置url对应服务器的接口.
+    ``` javaScript
+    var configs = {
+        serverUrl: 'http://www.kuaidi100.com',
+        rule: {
+            local: 'api/',
+            after: ''
+        }
+    }
+    ```
+    根据上面的配置,本地请求 本机IP+'/api/aa/bb/cc?aa=11',会将http://www.kuaidi100.com/api/aa/bb/cc?aa=11返回,如果不是JSON数据格式会返回一个500错误的接口.
+    ``` javaScript
+    {
+    "status": 500,
+    "message": "这不是一个json接口"
+    }
+    ```
+
 * #### 支持resetful接口
 
 	``` javaScript
@@ -42,5 +65,7 @@
 > * Gulp工程化。
 > * 文档编写。
 > * 中间件编写。
+> * <del>路由设计(第一阶段)。</del>
 > * 路由设计。
 > * pm2配置文件。
+> * 支持cookies转发,加入cookies加密解密机制。

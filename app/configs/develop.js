@@ -1,9 +1,9 @@
 "use strict";
 
 var configs = {
-    serverUrl: '',
+    serverUrl: 'http://www.kuaidi100.com',
     rule: {
-        local: '',
+        local: 'api/',
         after: ''
     }
 };

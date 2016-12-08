@@ -3,8 +3,10 @@
  */
 "use strict";
 
+var request = require('request');
+
 module.exports = function(app){
-    //
+
 
     // index page
     app.get('/api/test', function(req, res){
@@ -16,4 +18,7 @@ module.exports = function(app){
         err.message = '自定义错误';
         res.fail(err);
     });
+
+    // 自定义
+    qNode.tools.api(app, request);
 };
