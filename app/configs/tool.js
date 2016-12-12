@@ -5,6 +5,7 @@
 
 var secrets = require('./secret');
 var crypto = require('crypto');
+var _ = require('lodash')
 
 global.qNode.tools = {};
 
@@ -15,9 +16,12 @@ global.qNode.tools = {};
  */
 global.qNode.tools.api = function(app, request){
     app.get(/^\/api\/.*$/i, function(req, res, next){
+        console.info(req.headers);
         var urlPath = qNode.configs.serverUrl + req.originalUrl.replace(qNode.configs.rule.local,  qNode.configs.rule.after);
-        request(urlPath, function (error, response, body) {
-            console.info(body);
+        request({
+            url: urlPath,
+            //headers: _.omit(req.headers, ['cookie', 'refer']),
+        }, function (error, response, body) {
             if(typeof body == 'string'){
                 try {
                     body = JSON.parse(body);

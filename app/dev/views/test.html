@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+test
+
+
+<% include ./layouts/header %>
+<script>
+    $(function(){
+        $.get('/api/query?type=shunfeng&postid=972360168653', function(data){
+            console.log(data);
+        });
+
+
+        $.get('/api/yatdysfdy', function(data){
+            console.log(data);
+        })
+    });
+</script>
+</body>
+</html>

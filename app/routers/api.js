@@ -6,8 +6,6 @@
 var request = require('request');
 
 module.exports = function(app){
-
-
     // index page
     app.get('/api/test', function(req, res){
         res.success('test', 'messge');
